@@ -1,0 +1,21 @@
+define first = proc(p) .p(0) % p is assumed to be a pair
+define second = proc(p) .p(1) % p is assumed to be a pair
+define empty = 0 % give the "empty list" a name
+define list = proc(x, xs) .pair(x, xs) % creates a nonempty list
+define isEmpty = proc(xs) if xs then 0 else 1
+define head = proc(xs) .first(xs) % the first element of the list
+define tail = proc(xs) .second(xs) % the (list of the) rest of the list
+define pair = proc(x, y) proc(t) if t then y else x
+
+define displayList = proc(lst) 
+                        if .isEmpty(lst) then 0 
+                            else 
+                                {displayChar('[);
+                                let traverse = proc(x, traverse) 
+                                if .isEmpty(x) then {displayChar(']); 0} 
+                                else
+                                    {display(.head(x)); if .isEmpty(.tail(x)) 
+                                                        then 0 else displayChar(',); 
+                                    .traverse(.tail(x), traverse)}
+                                in 
+                                    .traverse(lst, traverse) }

@@ -1,0 +1,20 @@
+declare prime : [int => bool]
+declare prime2 : [int, int => bool]
+declare factorOf: [int, int => bool]
+
+define prime = proc(i:int): bool 
+    if <?(i, 2) 
+        then 
+            false 
+        else 
+            .prime2(i, -(i, 1))
+
+define factorOf: = proc( i:int, f:int,) : bool
+    ==?( i, *(f, /(i, f)) )
+
+define prime2 = proc(i:int, f:int): bool 
+    if ==?(f, 1) 
+        then true
+        else if and( .prime(f), .factorOf: (f, i) )
+            then false
+            else .prime2(i, -(f, 1))

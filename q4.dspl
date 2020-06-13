@@ -1,0 +1,24 @@
+define first = proc(p) .p(0) % p is assumed to be a pair
+define second = proc(p) .p(1) % p is assumed to be a pair
+define empty = 0 % give the "empty list" a name
+define list = proc(x, xs) .pair(x, xs) % creates a nonempty list
+define isEmpty = proc(xs) if xs then 0 else 1
+define head = proc(xs) .first(xs) % the first element of the list
+define tail = proc(xs) .second(xs) % the (list of the) rest of the list
+define pair = proc(x, y) proc(t) if t then y else x
+define lst38 = .list(3, .list(8,empty))
+define lst39 = .list(3, .list(9,empty))
+
+
+
+%%% defines are global scope
+define size = proc(xs)
+                if .isEmpty(xs) then 0
+                else
+                    +(.size(.tail(xs)), 1)
+
+
+define append = proc(lst1, lst2)
+                if .isEmpty(lst1) then lst2
+                else
+                .list(.head(lst1), .append(.tail(lst1), lst2))

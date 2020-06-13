@@ -1,0 +1,6 @@
+define pair = proc(x, y) proc(t) if t then y else x
+define first = proc(p) .p(0) % p is assumed to be a pair
+define second = proc(p) .p(1) % p is assumed to be a pair
+define displayPair = proc(x) {displayChar('(); display(.first(x) );  
+                                displayChar(',); display(.second(x) ); 
+                                displayChar('));0}

@@ -1,0 +1,14 @@
+Question 1
+a. int
+b. FREE
+c. FREE 
+d. FREE
+e. FREE
+f. int
+g. int
+h. [int => int]
+i. int
+j. int
+k  FREE
+l. bool
+m. [bool, int, [int, int => bool] => int]
